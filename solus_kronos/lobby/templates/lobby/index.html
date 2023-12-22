@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <title>Sollus Kronos</title>
+    </head>
+  <body>
+    
+
+    <!--NAVBAR-->
+    <nav class="navbar  pb-1 pt-5 has-background-link	is-link" role="navigation" aria-label="main navigation">
+      <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+              <!--imprime o cnpj do cliente-->
+              {% if user.is_authenticated and user.cliente %}
+              
+                  <img src="{% static 'logos_clientes/'|add:user.cliente.cnpj|add:'.png' %}" alt="Logo do Cliente">
+              {% endif %}
+            </a>
+        
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        
+          <div id="navbarBasicExample" class="navbar-menu ">
+            <div class="navbar-start">
+              <a class="navbar-item" href="{% url 'listar_dashboards' %}">Ver Dashboards</a>
+        
+              <a class="navbar-item" href="{% url 'cadastrar_nf' %}">Cadastro de nf</a>
+        
+              <a class="navbar-item" href="{% url 'listar_nfs' %}">Lista de nfs</a>
+        
+              <a class="navbar-item" href="#">
+                Contato
+              </a>
+            </div>
+        
+            <div class="navbar-end">
+              <div class="navbar-item">
+    
+                <div class="buttons">
+                              {% if user.is_authenticated %}
+                              <a class="button is-light">{{ user.nome }}</a>
+                  {% endif %}
+                  <a class="button is-light"  href="{% url 'logout' %}">
+                    Logout
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+
+    <!--FIM-->
+
+    <!--TITULO PAGINA-->
+    <section class="is-fullwidth has-background-light">
+      <div class="container pt-6 pb-6">
+        <h3 class="title is-3">Relatórios</h3>
+
+    </div>
+  </section>
+    <!--FIM-->
+
+    <!--CONTADORES-->
+    <div class="container level pt-6 pb-6">
+      
+      
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total de Relatorios</p>
+          <p class="title">23</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading"> Usuário ativos</p>
+          <p class="title">10</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total de Categorias</p>
+          <p class="title">5</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total de Vizualizações</p>
+          <p class="title">789</p>
+        </div>
+      </div>
+</div>
+
+<!--CARTÕES-->
+<section class="section">
+  <div class="container">
+    <div class="columns is-multiline">
+
+      <!-- Linha 1 -->
+      <div class="column is-one-third">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              <span class="icon">
+                <i class="fas fa-code"></i>
+              </span>
+              Título 1
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>Subtítulo 1.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-one-third">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              <span class="icon">
+                <i class="fas fa-database"></i>
+              </span>
+              Título 2
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>Subtítulo 2.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-one-third">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              <span class="icon">
+                <i class="fas fa-cogs"></i>
+              </span>
+              Título 3
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>Subtítulo 3.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linha 2 -->
+      <div class="column is-one-third">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              <span class="icon">
+                <i class="fas fa-mobile-alt"></i>
+              </span>
+              Título 4
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>Subtítulo 4.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-one-third">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              <span class="icon">
+                <i class="fas fa-globe"></i>
+              </span>
+              Título 5
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>Subtítulo 5.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-one-third">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              <span class="icon">
+                <i class="fas fa-chart-bar"></i>
+              </span>
+              Título 6
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <p>Subtítulo 6.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!--FIM-->
+
+
+
+
+
+
+<!--RODAPÉ-->
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Kronos Tecnologia</strong> &copy; 2023. Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
+<!--FIM-->
+
+    <script type="text/javascript" src="lib/main.js"></script>
+  </body>
+</html>

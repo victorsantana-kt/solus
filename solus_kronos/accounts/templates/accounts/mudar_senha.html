@@ -1,0 +1,19 @@
+
+
+
+{% extends "base.html" %}
+
+{% block title %}Página Específica - Solus-Kronos{% endblock %}
+
+{% block content %}
+    <!-- accounts/templates/accounts/register.html -->
+    <h2>Mudar Senha</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Mudar Senha</button>
+    </form>
+{% endblock %}
+
+
+

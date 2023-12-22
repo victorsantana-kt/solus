@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+
+{% block title %}Página Específica - Solus-Kronos{% endblock %}
+
+{% block content %}
+ <!DOCTYPE html>
+<head>
+    <title>Criar Cliente</title>
+    <!-- Inclua o CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+    <div class="container">
+        <h1>Criar Cliente</h1>
+        <form method="post" enctype="multipart/form-data" class="mb-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Salvar Cliente</button>
+        </form>
+
+        <!-- Tabela de clientes cadastrados -->
+        <h2>Clientes Cadastrados</h2>
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nome da Empresa</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                    <!-- Adicione mais cabeçalhos de coluna conforme necessário -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.nome_empresa }}</td>
+                    <td>{{ cliente.endereco }}</td>
+                    <td>{{ cliente.telefone }}</td>
+                    <!-- Adicione mais células conforme necessário -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

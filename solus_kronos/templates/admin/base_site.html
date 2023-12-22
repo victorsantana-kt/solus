@@ -1,0 +1,15 @@
+{% extends "admin/base_site.html" %}
+{% load static %}  <!-- Certifique-se de que esta linha está aqui -->
+
+{% block extrahead %}
+
+
+{% endblock extrahead %}
+
+{% block branding %}
+    <h1 id="site-name">
+        <a href="{% url 'admin:index' %}">
+            <img src="{% static 'img/logo-white.png' %}"  width="162" height="35"  alt="Logo Sollus" />
+        </a>
+    </h1>
+{% endblock %}

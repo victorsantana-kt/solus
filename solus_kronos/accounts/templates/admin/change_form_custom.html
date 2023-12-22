@@ -1,0 +1,23 @@
+{% extends "admin/change_form.html" %}
+{% block extrahead %}
+    {{ block.super }}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const clienteSelect = document.querySelector('#id_cliente');
+            const filialSelect = document.querySelector('#id_filial');
+
+            clienteSelect.addEventListener('change', function() {
+                fetch(`/filiais_por_cliente/${this.value}/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        filialSelect.innerHTML = '';
+                        data.forEach(filial => {
+                            let option = new Option(filial.nome, filial.id);
+                            filialSelect.add(option);
+                        });
+                    })
+                    .catch(error => console.error('Erro:', error));
+            });
+        });
+    </script>
+{% endblock %}

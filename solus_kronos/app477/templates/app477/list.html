@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Listagem BD 477</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NUMLANCTO</th>
+                <th>PARCELA</th>
+                <th>EVENTO</th>
+                <!-- Inclua os demais campos como cabeçalhos de coluna aqui -->
+                <!-- Exemplo: -->
+                <th>DESCR EVENTO</th>
+                <th>HISTORICO DA DESPESA</th>
+                <!-- Continue com os outros campos -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for registros in registros %}
+            <tr>
+                <td>{{ registros.NUMLANCTO }}</td>
+                <td>{{ registros.PARCELA }}</td>
+                <td>{{ registros.EVENTO }}</td>
+                <!-- Exiba os demais campos aqui -->
+                <!-- Exemplo: -->
+                <td>{{ registros.DESCR_EVENTO }}</td>
+                <td>{{ registros.HISTORICO_DA_DESPESA }}</td>
+                <!-- Continue com os outros campos -->
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="X">Nenhum registro encontrado.</td>  <!-- Atualize X para o número total de colunas -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

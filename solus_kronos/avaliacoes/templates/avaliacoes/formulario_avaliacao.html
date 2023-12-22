@@ -1,0 +1,110 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pesquisa SOS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  
+  <style>
+    body {
+      display: flex;
+      font-family: 'Roboto', sans-serif;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url("{% static 'img/pesquisa/back-pesquisa-sos.jpg' %}");
+      background-size: cover;
+    }
+
+    .card {
+      border-radius: 15px;
+      width: 700px;
+      min-height: 500px;
+      padding: 20px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .zoom {
+      font-size: 30px;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .zoom:hover {
+      transform: scale(1.2);
+    }
+
+    .botao {
+      background: #4777a6;
+      color: #fff;
+    }
+
+    .botao:hover {
+      background: #306191;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="content has-text-centered">
+      <img src="{% static 'img/pesquisa/logo-sos.png' %}" alt="Logo" style="max-width: 150px;">
+      <h1 style="color: #356a9f" class="titulo title is-size-3">Aqui a sua opinião conta muito!</h1>
+      <p class="is-size-5">Como você avalia sua experiência com nossos serviços?</p>
+      <form id="formAvaliacao" method="post" action="{% url 'submeter_avaliacao' %}">
+        {% csrf_token %}
+        <div class="field">
+           <div class="control">
+
+
+            
+            <label class="radio zoom">
+			  <input type="radio" id="star1" name="nivel_satisfacao" value="1">
+              <Span class="clickable" style="font-size:50px" >&#128545</span> 
+            </label>
+
+
+            <label class="radio zoom">
+                <input type="radio" id="star1" name="nivel_satisfacao" value="2">
+              <Span class="clickable" style="font-size:50px" >&#128529</span>
+            </label>
+
+            <label class="radio zoom">
+                <input type="radio" id="star1" name="nivel_satisfacao" value="3">
+              <Span class="clickable " style="font-size:50px" >&#128524</span>
+            </label>
+
+            <label class="radio zoom">
+                <input type="radio" id="star1" name="nivel_satisfacao" value="4">
+              <Span class="clickable " style="font-size:50px" >&#128513</span>
+            </label>
+
+            <label class="radio zoom">
+                <input type="radio" id="star1" name="nivel_satisfacao" value="5">
+               <Span class="clickable " style="font-size:50px" >&#129321</span>
+            </label>
+
+          </div>
+        </div>
+        <!-- Restante do seu formulário -->
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('#formAvaliacao input[type="radio"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.getElementById('formAvaliacao').submit();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Obrigado</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  
+ 
+  <style>
+    body {
+      display: flex;
+      font-family: 'Roboto', sans-serif;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url("{% static 'img/pesquisa/back-pesquisa-sos.jpg' %}");
+      background-size: cover;
+    }
+    .card {
+      border-radius: 15px;
+      width: 700px;
+      min-height: 500px;
+      padding: 20px;
+      background-color: white; /* ou a cor desejada */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Alinhamento vertical */
+      align-items: center; /* Alinhamento horizontal */
+    }
+    .zoom {
+      font-size: 30px;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    .zoom:hover {
+      transform: scale(1.2);
+    }
+    .botao{
+    background: #4777a6;
+    color: #fff;
+     }
+     .botao:hover{
+      background: #306191;
+      color: #fff;
+     }
+     .gif{
+     margin-top: -50px;
+     }
+   
+</style>
+
+
+</head>
+<body>
+  <div class="card">
+    <div class="content has-text-centered">
+      <img src="{% static 'img/pesquisa/logo-sos.png' %}" alt="Logo" style="max-width: 150px;">
+      <h1 style="color: #356a9f" class="titulo title is-size-2 mb*-0">Agradecemos <br>sua resposta!</h1>
+
+      
+    </div>
+    <img src ="{% static 'img/pesquisa/like-gif.gif' %}"   class="gif" style="max-width: 200px">
+    <a href="/avaliacoes/"><b>Voltar para a página inicial</b></a>
+  </div>
+        <script>
+            const spans = document.querySelectorAll('.clickable');
+
+            spans.forEach(span => {
+            span.addEventListener('click', () => {
+                span.style.color = 'initial';
+            });
+            });
+        </script>
+        
+</body>
+
+</html>

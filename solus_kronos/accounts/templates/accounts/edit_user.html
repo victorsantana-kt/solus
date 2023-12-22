@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Página Específica - Solus-Kronos{% endblock %}
+
+{% block content %}
+<head>
+    <!-- Inclua o CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+          <h2>Editar Cadastro</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Mudanças</button>
+        <a class="btn-link" href="{% url 'mudar_senha' %}">Mudar Senha, clique aqui.</a>
+    </form>
+    
+    </div>
+{% endblock %}

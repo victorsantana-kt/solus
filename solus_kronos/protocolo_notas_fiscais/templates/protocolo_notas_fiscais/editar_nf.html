@@ -1,0 +1,12 @@
+{% extends "base.html" %} <!-- Substitua por seu template base, se aplicável -->
+
+{% block content %}
+<div class="container">
+    <h2>Editar Nota Fiscal</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Renderiza o formulário aqui -->
+        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+    </form>
+</div>
+{% endblock %}

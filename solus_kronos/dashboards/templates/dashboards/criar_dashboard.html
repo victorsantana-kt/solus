@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+
+{% block title %}Página Específica - Solus-Kronos{% endblock %}
+
+{% block content %}
+    <!-- accounts/templates/accounts/register.html -->
+    <h1>Cadastro de Dashboard</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Salvar Dashboard</button>
+        </form>
+{% endblock %}
+
+
+
+

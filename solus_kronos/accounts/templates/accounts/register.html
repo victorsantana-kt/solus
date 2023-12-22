@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Página Específica - Solus-Kronos{% endblock %}
+
+{% block content %}
+<head>
+    <!-- Inclua o CSS do Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Novo Usuário</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+
+        <!-- Tabela de usuários cadastrados -->
+        <h2>Usuários Cadastrados</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <!-- Adicione mais cabeçalhos se necessário -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.username }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <!-- Adicione mais células se necessário -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

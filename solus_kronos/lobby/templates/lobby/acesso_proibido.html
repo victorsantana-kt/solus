@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://bulma.io/vendor/fontawesome-free-5.15.2-web/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.8.2/css/bulma.css" rel="stylesheet" />
+{% block title %}Página Específica - Solus-Kronos{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container-fluid" style="padding-top:100px">
+    
+    <img src="{% static 'img/atencao.jpeg' %}"  width="100" height="90"  alt="Logo Sollus" />
+    <h2>Sem permissão de acesso à este módulo!!<br>Entre em contato com o administrador do sistema.</h2>
+    <h3></h3>
+    <a class="btn-link" href="{% url 'lobby' %}"><b>Ir para o Inicio</b></a>
+
+</div>
+{% endblock %}
