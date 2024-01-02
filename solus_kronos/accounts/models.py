@@ -12,6 +12,8 @@ class CustomUser(AbstractUser):
     ), default='ativado')
     
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='usuarios', null=True, blank=True)
+    #cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='usuarios', null=True, blank=True, editable=False)
+
     filial = models.ForeignKey(Filial, on_delete=models.CASCADE, related_name='usuarios', null=True, blank=True)  # Nova relação com Filial
 
     def is_super_user(self):

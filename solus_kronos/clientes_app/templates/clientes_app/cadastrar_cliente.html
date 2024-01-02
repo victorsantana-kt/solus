@@ -1,0 +1,12 @@
+<!-- clientes_app/templates/clientes_app/cadastrar_cliente.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Cadastrar Cliente</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar Cliente</button>
+  </form>
+{% endblock %}

@@ -22,6 +22,17 @@ class Cliente(models.Model):
     logo = models.ImageField(upload_to=RenameLogo('static/logos_clientes/'), null=True, blank=True)
 
     # Adicione mais campos conforme necessário
+    def save(self, *args, **kwargs):
+        try:
+            # tenta obter o objeto antigo
+            obj = Cliente.objects.get(id=self.id)
+        except Cliente.DoesNotExist:
+            pass  # se não existir um objeto antigo, não faz nada
+        else:
+            # se existir um logotipo antigo e ele é diferente do novo
+            if obj.logo and self.logo and obj.logo != self.logo:
+                obj.logo.delete(save=False)  # deleta o arquivo antigo, sem salvar o objeto
 
+        super(Cliente, self).save(*args, **kwargs)  # continua a salvar normalmente
     def __str__(self):
         return self.nome_empresa

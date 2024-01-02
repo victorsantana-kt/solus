@@ -1,0 +1,157 @@
+<!-- clientes_app/templates/clientes_app/lista_clientes.html -->
+
+
+
+
+{% extends "base.html" %}
+<!-- Substitua por seu template base, se aplicável -->
+{% load static %} {% block content %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css"
+/>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 40, "GRAD" 0, "opsz" 24;
+  }
+</style>
+
+<!-- Botão para abrir o modal -->
+<script>
+  $(document).ready(function () {
+    $("#myTable").DataTable({
+      pageLength: 50,
+      fixedHeader: true,
+      keys: true,
+      select: true,
+    });
+  });
+</script>
+<style>
+  /* Estilos customizados para aumentar a largura das células */
+  .wide-cell {
+    min-width: 150px; /* Ajuste a largura mínima conforme necessário */
+  }
+</style>
+
+
+
+<div class="container-fluid" style="padding-top:20px">
+    <h3 class="mb-4">Clientes Cadastrados</h3>
+    <button
+    type="button"
+    class="btn btn-info"
+    data-bs-toggle="modal"
+    data-bs-target="#cadastrarNfModal"
+    >
+    <span class="material-icons"> note_add </span>Cadastrar Cliente
+  </button>
+  <!-- Botão para abrir o modal -->
+  <button
+    type="button"
+    class="btn btn-warning"
+    data-bs-toggle="modal"
+    data-bs-target="#filtroNfModal"
+  >
+    <span class="material-icons"> search </span>Filtrar NFs
+  </button>
+
+  <a href="{% url 'listar_nfs' %}" class="btn btn-secondary"
+    ><span class="material-icons"> cleaning_services </span>Limpar Filtros</a
+  >
+  <br /><br />
+  <table class="table table-bordered table-hover display" id="myTable">
+    <thead class="table-primary">
+      <tr>
+        <th class="wide-cell">Ações</th>
+        <th class="wide-cell">Nome</th>
+        <th class="wide-cell">CNPJ</th>
+        <th class="wide-cell">Produto</th>
+        <th class="wide-cell">Cliente Kronos</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for clientes in clientes %}
+      <tr>
+        <td>
+          <!-- Adapte as ações conforme necessário -->
+          <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+              Ações
+            </button>
+            <div class="dropdown-menu">
+              
+              <!-- Adicione mais ações aqui conforme necessário -->
+            </div>
+          </div>
+        </td>
+        <td>{{ clientes.nome }}</td>
+        <td>{{ clientes.cnpj }}</td>
+        <td>{{ clientes.produto.nome }}</td>
+        <td>{{ clientes.cliente_kronos }}</td> <!-- Presume-se que Cliente tenha um campo nome -->
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5">Nenhum cliente encontrado.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- Modal Cadastro NF-->
+<div
+  class="modal fade"
+  id="cadastrarNfModal"
+  tabindex="-1"
+  aria-labelledby="cadastrarNfModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form
+        method="POST"
+        action="{% url 'lista_clientes' %}"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title" id="cadastrarNfModalLabel">Cadastrar Cliente</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            Sair
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ form.as_p }}
+          <!-- Renderiza o formulário aqui -->
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<script src="{% static 'jquery/jquery.mask.min' %}"></script>
+<script src="{% static 'jquery/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'jquery/mascara.js' %}"></script>
+{% endblock %}

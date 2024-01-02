@@ -111,7 +111,7 @@ def custom_login_redirect(request):
     cliente = user.cliente
 
     # Verifica se o cliente está associado ao produto_id=3
-    if ClienteProduto.objects.filter(cliente=cliente, produto_id=3).exists():
+    if ClienteProduto.objects.filter(cliente=cliente, produto_id=10).exists():
         return render(request, 'avaliacoes/formulario_avaliacao.html')
     else:
         return redirect('/')

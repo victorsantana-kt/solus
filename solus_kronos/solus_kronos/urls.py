@@ -17,6 +17,8 @@ urlpatterns = [
     path('protocolo_notas_fiscais/', include('protocolo_notas_fiscais.urls')),
     path('477/', include('app477.urls')),
     path('avaliacoes/', include('avaliacoes.urls')),
+    path('task/', include('task.urls')),
+    path('clientes_app/', include('clientes_app.urls')),
     
 ]
 

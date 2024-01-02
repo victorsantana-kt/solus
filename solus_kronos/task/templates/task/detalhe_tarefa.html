@@ -1,0 +1,12 @@
+<!-- task/templates/task/detalhe_tarefa.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Detalhe da Tarefa: {{ tarefa.descricao }}</h2>
+<p><strong>Status:</strong> {{ tarefa.get_status_display }}</p>
+<p><strong>Responsável:</strong> {{ tarefa.responsavel }}</p>
+<p><strong>Prazo:</strong> {{ tarefa.prazo }}</p>
+<p><strong>Área:</strong> {{ tarefa.get_area_display }}</p>
+<!-- Adicione mais detalhes conforme necessário -->
+{% endblock %}

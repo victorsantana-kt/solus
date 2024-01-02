@@ -11,10 +11,10 @@ def lobby(request):
     cliente = user.cliente
 
     # Verifica se o cliente está associado ao produto_id=3
-    if ClienteProduto.objects.filter(cliente=cliente, produto_id=3).exists():
-        return render(request, 'avaliacoes/formulario_avaliacao.html')
-    else:
-        return render(request, 'lobby/lobby.html')
+    #if ClienteProduto.objects.filter(cliente=cliente, produto_id=10).exists():
+    #   return render(request, 'avaliacoes/formulario_avaliacao.html')
+    #else:
+    return render(request, 'lobby/lobby.html')
     
 
 

@@ -45,7 +45,7 @@
 
                 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url 'listar_dashboards' %}" style="display:none">Ver Dashboards</a>
+                    <a class="nav-link text-white" href="{% url 'listar_dashboards' %}" style="display:block">Dashboards</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'lobby' %}">Inicio</a>
@@ -53,12 +53,19 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'listar_nfs' %}">Lista de nfs</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'lista_tarefas' %}">Tarefas</a>
+                </li>
             </ul>
         </div>
         
     <a class="text-white btn" href="{% url 'edit_user' %}">
 {% if user.is_authenticated %}
-    {{ user.nome }}
+    {{ user.nome }} 
+{% endif %}
+        <b>/</b>
+{% if user.is_authenticated %}
+    {{ user.cliente }}     
 {% endif %}
     </a>
       <a class="nav-link text-white" href="{% url 'logout' %}">Logout</a>

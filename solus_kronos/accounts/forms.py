@@ -13,12 +13,12 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = ('username', 'nome', 'status', 'cliente')  # Incluído 'cliente' nos campos
+        fields = ('username', 'nome', 'status')  # Incluído 'cliente' nos campos
 
 
 class CustomUserChangeForm(UserChangeForm):
-    cliente = forms.ModelChoiceField(queryset=Cliente.objects.all(), required=True)
 
     class Meta:
         model = get_user_model()
-        fields = ('nome', 'username', 'email', 'cliente')  # Incluído 'cliente' nos campos
+        fields = ('nome', 'username', 'email')  # Removido 'cliente' dos campos
+
